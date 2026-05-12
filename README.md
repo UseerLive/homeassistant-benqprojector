@@ -1,4 +1,4 @@
-# Home Assistant integration for BenQ projectors (W4100i + Waveshare Fork)
+# Home Assistant integration for BenQ projectors (UL Fork)
 
 ![Python][python-shield]
 [![GitHub Release][releases-shield]][releases]
