@@ -6,7 +6,7 @@ import logging
 import os
 from typing import Any, Final
 
-import serial
+import serialx
 import serial.tools.list_ports
 import voluptuous as vol
 from benqprojector import (
@@ -139,8 +139,8 @@ class BenQProjectorConfigFlow(ConfigFlow, domain=DOMAIN):
         )
 
         # Test if the device exists.
-        if not os.path.exists(serial_port):
-            errors[CONF_SERIAL_PORT] = "nonexisting_serial_port"
+        #if not os.path.exists(serial_port):
+        #    errors[CONF_SERIAL_PORT] = "nonexisting_serial_port"
 
         if errors.get(CONF_SERIAL_PORT) is None:
             # Test if we can connect to the device
@@ -162,7 +162,7 @@ class BenQProjectorConfigFlow(ConfigFlow, domain=DOMAIN):
 
                     unique_id = projector.unique_id
                 await projector.disconnect()
-            except serial.SerialException:
+            except:
                 errors["base"] = "cannot_connect"
 
         await self.async_set_unique_id(unique_id)
