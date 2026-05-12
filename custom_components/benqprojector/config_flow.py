@@ -96,17 +96,7 @@ class BenQProjectorConfigFlow(ConfigFlow, domain=DOMAIN):
 
         self._step_setup_serial_schema = vol.Schema(
             {
-                vol.Required(CONF_SERIAL_PORT, default=""): SelectSelector(
-                    SelectSelectorConfig(
-                        options=[
-                            SelectOptionDict(value=k, label=v)
-                            for k, v in list_of_ports.items()
-                        ],
-                        mode=SelectSelectorMode.DROPDOWN,
-                        custom_value=True,
-                        sort=True,
-                    )
-                ),
+                vol.Required(CONF_SERIAL_PORT, default=""): SerialPortSelector(),
                 vol.Required(CONF_BAUD_RATE): vol.In(BAUD_RATES),
             }
         )
